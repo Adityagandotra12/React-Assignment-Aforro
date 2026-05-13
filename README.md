@@ -13,16 +13,60 @@ Sales-style dashboard built with **React** and **Vite** for the Aforro React ass
 
 ---
 
-## Quick start
+## Project setup
 
-```bash
-git clone https://github.com/Adityagandotra12/React-Assignment-Aforro.git
-cd React-Assignment-Aforro
-npm install
-npm run dev
-```
+Follow these steps to run the app locally.
 
-Open the URL Vite prints in the terminal (typically **http://localhost:5173**).
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Adityagandotra12/React-Assignment-Aforro.git
+   cd React-Assignment-Aforro
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open the app** in your browser using the URL Vite prints (usually **http://localhost:5173**).
+
+5. **(Optional) Production build** — compile and preview the production bundle:
+
+   ```bash
+   npm run build
+   npm run preview
+   ```
+
+### Features implemented
+
+**Part 1 — Dashboard UI (Figma-aligned layout)**
+
+- Sidebar with brand, navigation links, and “Dabang Pro” promo card.
+- Header with dashboard title, search field, language selector, notifications, and user menu (presentational).
+- **Today’s Sales** summary cards with export control (visual).
+- **Visitor Insights** line chart (SVG), month axis, and legend.
+- **Total Revenue** dual bar chart by weekday; **Customer Satisfaction** area chart; **Target vs Reality** bars and summary cards.
+- **Sales Mapping by Country** map image; **Volume vs Service Level** stacked bars with legend and values.
+- **Responsive layout:** sidebar collapses to a horizontal strip on smaller widths; wide tables scroll horizontally where needed.
+- **Styling:** plain CSS only (`index.css`, `App.css`) — no Tailwind, Bootstrap, or chart libraries.
+
+**Part 2 — Users table ([JSONPlaceholder users](https://jsonplaceholder.typicode.com/users))**
+
+- Loads users with the **Fetch API** (`useEffect`, abort-safe cleanup on unmount).
+- Table columns: **Name**, **Email**, **Company name**, **City** (from `company.name` and `address.city`).
+- **Search:** filter by name or email (case-insensitive).
+- **Sort:** name **A–Z** or **Z–A** via dropdown.
+- **Filter by city:** dropdown populated from distinct cities in the dataset; **All cities** shows everyone.
+- **Reset** clears search, city filter, and restores default sort (A–Z).
+- **Loading** and **error** states with clear messaging in the users card.
 
 ---
 
@@ -77,26 +121,9 @@ React-Assignment-Aforro/
 
 ---
 
-## Features
+## Design reference
 
-### Part 1 — Dashboard UI
-
-- **Layout** aligned with the [Figma Sales Dashboard (Community)](https://www.figma.com/design/4uElaIOstOmgCYqGHMdX7C/Sales-Dashboard-Design--Community-?node-id=7922-16): sidebar, header, today’s sales strip, visitor chart, mid-row charts (revenue, satisfaction, target), bottom row (users, sales map, volume vs service level).
-- **Responsive behavior:** wide screens use a fixed sidebar; narrower breakpoints collapse the sidebar into a horizontal strip; tables and wide widgets scroll horizontally where needed.
-- **Charts:** SVG/CSS placeholders (lines, bars, stacked bars, map image)—no Recharts/Chart.js.
-
-### Part 2 — Users table (JSONPlaceholder)
-
-| Requirement        | Implementation |
-| ------------------ | -------------- |
-| Endpoint           | `GET https://jsonplaceholder.typicode.com/users` |
-| Columns            | **Name**, **Email**, **Company name** (`company.name`), **City** (`address.city`) |
-| Fetch              | `fetch` in `useEffect`, cleanup on unmount |
-| Search             | Case-insensitive match on **name** or **email** |
-| Sort               | **Name A–Z** / **Name Z–A** (`localeCompare`) |
-| City filter        | Dropdown built from distinct cities in the loaded data; **All cities** clears filter |
-| Reset              | Clears search, city, and sort (back to A–Z) |
-| Loading / error    | Inline messages in the table card |
+Layout and visual hierarchy follow the [Figma Sales Dashboard (Community)](https://www.figma.com/design/4uElaIOstOmgCYqGHMdX7C/Sales-Dashboard-Design--Community-?node-id=7922-16) — not a pixel-perfect copy.
 
 ---
 
@@ -113,17 +140,6 @@ No API keys or `.env` file are required for this public endpoint.
 ## Static assets
 
 The **Sales mapping** widget loads a map image from the app base URL, e.g. `public/world-map-custom.png` (referenced in `ChartSection.jsx`). Ensure any custom map file you use is placed under **`public/`** so Vite serves it at the site root.
-
----
-
-## Production build
-
-```bash
-npm run build
-npm run preview
-```
-
-`preview` serves the contents of `dist/` so you can verify the production bundle before deploy.
 
 ---
 
