@@ -2,6 +2,8 @@
 
 Sales-style dashboard built with **React** and **Vite** for the Aforro React assignment. It implements a multi-section layout (sidebar, header, stats, charts) and a **Users** table backed by the public **JSONPlaceholder** users API with search, sort, filter, and loading/error handling.
 
+**Repository:** [github.com/Adityagandotra12/React-Assignment-Aforro](https://github.com/Adityagandotra12/React-Assignment-Aforro)
+
 ---
 
 ## Prerequisites
@@ -14,8 +16,8 @@ Sales-style dashboard built with **React** and **Vite** for the Aforro React ass
 ## Quick start
 
 ```bash
-git clone <your-repo-url>
-cd aforro-dashboard
+git clone https://github.com/Adityagandotra12/React-Assignment-Aforro.git
+cd React-Assignment-Aforro
 npm install
 npm run dev
 ```
@@ -53,7 +55,7 @@ No Tailwind, Bootstrap, Redux, or charting libraries.
 ## Project structure
 
 ```
-aforro-dashboard/
+React-Assignment-Aforro/
 ├── public/                 # Static assets (favicon, map image referenced by charts, etc.)
 ├── src/
 │   ├── components/
@@ -131,25 +133,6 @@ npm run preview
 - **Header search / notifications / language:** Presentational only (not connected to real search or APIs).
 - **Navigation:** Sidebar links use in-page hashes (e.g. `#settings`); there is no client-side router.
 - **Users table:** Filtering and sorting run **in the browser** on the dataset returned by the first successful fetch (no refetch per filter).
-
----
-
-## Submitting to GitHub
-
-1. Create a repository on GitHub (if you have not already).
-2. From this project directory:
-
-   ```bash
-   git init   # skip if already a repo
-   git add .
-   git commit -m "Initial commit: Aforro dashboard"
-   git remote add origin https://github.com/<you>/<repo>.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-3. Do **not** commit `node_modules/` or `dist/` (keep them in `.gitignore`).
-4. Submit the repository URL as required by the assignment or hiring process.
 
 ---
 
