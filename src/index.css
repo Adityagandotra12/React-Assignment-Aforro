@@ -1,0 +1,91 @@
+:root {
+  --font-sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --color-primary: #5d5fef;
+  --color-primary-dark: #4b4dd4;
+  --color-bg: #f5f6fa;
+  --color-surface: #ffffff;
+  --color-sidebar: #ffffff;
+  --color-sidebar-border: #eceff4;
+  --color-heading: #151d48;
+  --color-text: #425466;
+  --color-text-muted: #737791;
+  --color-nav-inactive: #808191;
+  --color-brand-text: #111827;
+  --color-border: #eceef4;
+  --color-pink-soft: #ffe2f3;
+  --color-pink: #ff8abf;
+  --color-yellow-soft: #fff4e0;
+  --color-yellow: #ffc542;
+  --color-green-soft: #e0f7ef;
+  --color-green: #4ad991;
+  --color-purple-soft: #ede9ff;
+  --color-purple: #9b8cf9;
+  --color-chart-purple: #9b51e0;
+  --color-chart-red: #ff6b6b;
+  --color-chart-teal: #14b8a6;
+  --shadow-card: 0px 4px 24px rgba(21, 29, 72, 0.06);
+  --shadow-soft: 0 2px 12px rgba(93, 95, 239, 0.08);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+
+  /* Dashboard widgets — consistent inner spacing (padding inside white cards) */
+  --widget-gap: 1.25rem;
+  --widget-pad-x: 1.25rem;
+  --widget-pad-y: 1rem;
+  --widget-pad-bottom: 1.25rem;
+  --widget-head-min-h: 3.25rem;
+  --widget-row-chart-min-h: 230px;
+
+  /* Volume vs Service Level — top = Volume (blue), bottom = Services (green) */
+  --chart-volume-blue: #3b82f6;
+  --chart-volume-green: #4ad991;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sans);
+  color: var(--color-heading);
+  font-weight: 600;
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+a {
+  color: inherit;
+}
