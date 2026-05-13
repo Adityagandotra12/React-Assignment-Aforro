@@ -2,7 +2,19 @@
 
 Sales-style dashboard built with **React** and **Vite** for the Aforro React assignment. It implements a multi-section layout (sidebar, header, stats, charts) and a **Users** table backed by the public **JSONPlaceholder** users API with search, sort, filter, and loading/error handling.
 
-**Repository:** [github.com/Adityagandotra12/React-Assignment-Aforro](https://github.com/Adityagandotra12/React-Assignment-Aforro)
+---
+
+## Assignment submission (checklist)
+
+| What to share | Details |
+| --------------- | ------- |
+| **1) GitHub repository link** | **https://github.com/Adityagandotra12/React-Assignment-Aforro** |
+| **2) README — project setup steps** | [Project setup](#project-setup) (clone → install → `npm run dev`, optional build) |
+| **2) README — features implemented** | [Features implemented](#features-implemented) (Part 1 UI + Part 2 users table / API) |
+| **2) README — implementation approach** | [Implementation approach](#implementation-approach) (how the app is structured and built) |
+| **2) README — assumptions or decisions** | [Assumptions and decisions](#assumptions-and-decisions) |
+
+**Clone URL:** `https://github.com/Adityagandotra12/React-Assignment-Aforro.git`
 
 ---
 
@@ -67,6 +79,18 @@ Follow these steps to run the app locally.
 - **Filter by city:** dropdown populated from distinct cities in the dataset; **All cities** shows everyone.
 - **Reset** clears search, city filter, and restores default sort (A–Z).
 - **Loading** and **error** states with clear messaging in the users card.
+
+---
+
+## Implementation approach
+
+How this project was put together (beyond the step-by-step setup above):
+
+- **Shell:** `App.jsx` renders the **sidebar** and **main** column; `Dashboard.jsx` composes the **header**, **Today’s Sales** (`StatsCards`), **charts** (`ChartSection`), and **Users** table (`UsersTable`) so each area stays in its own component file.
+- **Part 1 (UI):** Layout and widgets are mostly **presentational**—static or hand-drawn **SVG/CSS** in `ChartSection.jsx` and related CSS in `App.css`, aligned with the Figma reference without introducing a charting library.
+- **Part 2 (data table):** `UsersTable.jsx` loads the user list **once** with **`fetch`** inside `useEffect`, stores the result in **`useState`**, and derives **city options**, **filtered rows**, and **sorted rows** with **`useMemo`** so search, city filter, and name sort stay predictable and cheap. Loading and error UI are rendered from the same component state.
+- **Styling:** Shared tokens and base styles live in **`index.css`**; dashboard layout, cards, charts, and the users toolbar/table live in **`App.css`** to avoid scattering styles across many files while staying framework-free.
+- **Quality:** **ESLint** (React hooks + refresh rules) is configured via `eslint.config.js`; run `npm run lint` before submitting changes.
 
 ---
 
@@ -143,7 +167,7 @@ The **Sales mapping** widget loads a map image from the app base URL, e.g. `publ
 
 ---
 
-## Assumptions & decisions
+## Assumptions and decisions
 
 These choices were made to match the assignment scope and keep the codebase small and maintainable.
 
