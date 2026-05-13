@@ -145,10 +145,34 @@ The **Sales mapping** widget loads a map image from the app base URL, e.g. `publ
 
 ## Assumptions & decisions
 
-- **Figma:** Used for overall structure, spacing, and hierarchy—not a pixel-perfect match.
-- **Header search / notifications / language:** Presentational only (not connected to real search or APIs).
-- **Navigation:** Sidebar links use in-page hashes (e.g. `#settings`); there is no client-side router.
-- **Users table:** Filtering and sorting run **in the browser** on the dataset returned by the first successful fetch (no refetch per filter).
+These choices were made to match the assignment scope and keep the codebase small and maintainable.
+
+### Design & UI
+
+- **Figma:** The [Sales Dashboard (Community)](https://www.figma.com/design/4uElaIOstOmgCYqGHMdX7C/Sales-Dashboard-Design--Community-?node-id=7922-16) file was used as a **reference** for layout, sections, and hierarchy—not a pixel-perfect recreation.
+- **Charts:** Implemented as **SVG/CSS placeholders** (static or lightly scripted shapes). No charting library (e.g. Chart.js, Recharts) was added to avoid extra dependencies and scope creep.
+- **Header:** Search, language switcher, notifications, and user block are **visual / presentational** only—they are not wired to search logic, i18n, or a backend.
+- **Sidebar:** Links use **`href="#…"`** in-page anchors. There is **no client-side router** (no React Router); “pages” are not separate routes.
+
+### Data & users table
+
+- **API:** Only **`GET https://jsonplaceholder.typicode.com/users`** is used. No authentication, pagination API, or write operations.
+- **City filter:** Options are built from **distinct `address.city` values** in the fetched payload. “All cities” clears the filter. City matching is **exact string equality** (as returned by the API).
+- **Search:** Applies to **name and email** only, **case-insensitive**, substring match on the client after fetch.
+- **Sort:** Name sorting uses **`localeCompare`** for A–Z / Z–A on the **currently filtered** list (search + city applied first, then sort).
+- **Performance:** All filtering and sorting run **in memory** after a single fetch; changing filters does **not** call the API again.
+
+### Technical
+
+- **Stack:** **React 19 + Vite 8**, JavaScript (not TypeScript), and **global CSS** (`index.css`, `App.css`) instead of CSS-in-JS, Tailwind, or Bootstrap.
+- **Data fetching:** **Native `fetch`** only (assignment allows Fetch or Axios; Axios was not added).
+- **Map asset:** Sales map expects **`public/world-map-custom.png`** (or equivalent under `public/`) so `ChartSection` can load it via the Vite base URL.
+
+### What was intentionally out of scope
+
+- No automated tests (e.g. Vitest/RTL) in this repo.
+- No CI/CD or deployment configuration beyond what Vite provides locally (`build` / `preview`).
+- No environment variables file for the public JSONPlaceholder endpoint.
 
 ---
 
